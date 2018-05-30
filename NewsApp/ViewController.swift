@@ -12,14 +12,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       setToolBar()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func setToolBar(){
+        // Y position due to iphone X screen is moved down on 35 points
+        let toolbar = NewsToolBar(frame: CGRect(x:0,y:35,width:self.view.frame.width,height:50))
+        view.addSubview(toolbar)
     }
-
 
 }
 
