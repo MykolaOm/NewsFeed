@@ -19,57 +19,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU8-bh-bwE">
-                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="1LJ-GC-Igr" kind="embed" id="cJz-nC-Oit"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="fU8-bh-bwE" id="Edk-eZ-PYg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
-        <!--Item 2-->
+        <!--VIDEO-->
         <scene sceneID="74d-sb-cne">
             <objects>
                 <viewController id="t1H-AB-3oC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6N0-Ha-HhR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="582"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.3157691680344864" green="1" blue="0.26866740358078645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="2Uj-rs-6v6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="72E-xv-9Qy"/>
+                    <tabBarItem key="tabBarItem" title="VIDEO" id="72E-xv-9Qy">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3n-Iz-DPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2390" y="-290"/>
         </scene>
-        <!--Item 1-->
+        <!--FAVORITES-->
         <scene sceneID="jUP-aD-v1a">
             <objects>
                 <viewController id="o7j-HW-JNt" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="98V-gi-RkU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="582"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.93393556979806047" blue="0.20833618538797749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Nro-ll-Z4l"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="ZQE-qV-pre"/>
+                    <tabBarItem key="tabBarItem" title="FAVORITES" id="ZQE-qV-pre">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9CI-th-FiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2390" y="-943"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="Cxo-66-qzH">
             <objects>
-                <tabBarController id="1LJ-GC-Igr" sceneMemberID="viewController">
+                <tabBarController id="1LJ-GC-Igr" customClass="TabBarViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BEo-kG-ga2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -85,17 +91,19 @@
             </objects>
             <point key="canvasLocation" x="892" y="157"/>
         </scene>
-        <!--Item-->
+        <!--FAVORITES-->
         <scene sceneID="shu-9d-oJW">
             <objects>
                 <viewController id="eZY-Vm-54u" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3cb-4r-9FA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="582"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.21700919727537205" blue="0.17866801358001139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="4hg-vn-K5t"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2zE-8A-g4V"/>
+                    <tabBarItem key="tabBarItem" title="FAVORITES" id="2zE-8A-g4V">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxJ-Bb-Fmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
