@@ -94,20 +94,34 @@
         <!--FAVORITES-->
         <scene sceneID="shu-9d-oJW">
             <objects>
-                <viewController id="eZY-Vm-54u" sceneMemberID="viewController">
+                <viewController id="eZY-Vm-54u" customClass="NewsFeedViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3cb-4r-9FA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-77-ctv">
+                                <rect key="frame" x="16" y="20" width="343" height="207"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="g7Y-9B-Efz">
+                                <rect key="frame" x="168" y="190" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.21700919727537205" blue="0.17866801358001139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="4hg-vn-K5t"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="FAVORITES" id="2zE-8A-g4V">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="TopScrollView" destination="5vm-77-ctv" id="Ejo-c1-OPh"/>
+                        <outlet property="topScrollPageControl" destination="g7Y-9B-Efz" id="N1p-cd-FmY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxJ-Bb-Fmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2476" y="363"/>
+            <point key="canvasLocation" x="2476" y="362.96851574212894"/>
         </scene>
     </scenes>
 </document>
