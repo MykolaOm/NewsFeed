@@ -16,6 +16,8 @@
 		17A22DFD20BF313F00E21F4E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A22DFC20BF313F00E21F4E /* TabBarViewController.swift */; };
 		17A22E0820BF440700E21F4E /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A22E0720BF440700E21F4E /* NewsFeedViewController.swift */; };
 		17A22E0A20BF46A100E21F4E /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A22E0920BF46A100E21F4E /* NewsModel.swift */; };
+		17A22E0F20BF49BF00E21F4E /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A22E0D20BF49BF00E21F4E /* NewsTableViewCell.swift */; };
+		17A22E1020BF49BF00E21F4E /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17A22E0E20BF49BF00E21F4E /* NewsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		17A22DFC20BF313F00E21F4E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		17A22E0720BF440700E21F4E /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		17A22E0920BF46A100E21F4E /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		17A22E0D20BF49BF00E21F4E /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		17A22E0E20BF49BF00E21F4E /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			children = (
 				17A22DFA20BF2C6400E21F4E /* NewsToolBar.swift */,
 				17A22E0920BF46A100E21F4E /* NewsModel.swift */,
+				17A22E0D20BF49BF00E21F4E /* NewsTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			children = (
 				17A22DF120BF2AAC00E21F4E /* LaunchScreen.storyboard */,
 				17A22DEC20BF2AA200E21F4E /* Main.storyboard */,
+				17A22E0E20BF49BF00E21F4E /* NewsTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +174,7 @@
 			files = (
 				17A22DF320BF2AAC00E21F4E /* LaunchScreen.storyboard in Resources */,
 				17A22DF020BF2AAC00E21F4E /* Assets.xcassets in Resources */,
+				17A22E1020BF49BF00E21F4E /* NewsTableViewCell.xib in Resources */,
 				17A22DEE20BF2AA200E21F4E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17A22E0A20BF46A100E21F4E /* NewsModel.swift in Sources */,
+				17A22E0F20BF49BF00E21F4E /* NewsTableViewCell.swift in Sources */,
 				17A22DFD20BF313F00E21F4E /* TabBarViewController.swift in Sources */,
 				17A22DEB20BF2AA200E21F4E /* ViewController.swift in Sources */,
 				17A22DFB20BF2C6400E21F4E /* NewsToolBar.swift in Sources */,

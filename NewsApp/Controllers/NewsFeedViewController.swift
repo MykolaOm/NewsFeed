@@ -8,7 +8,18 @@
 
 import UIKit
 
-class NewsFeedViewController: UIViewController, UIScrollViewDelegate {
+class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDelegate, UITableViewDataSource {
+   
+    let tableViewRowsQty : Int = 10
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewRowsQty
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
 
     @IBOutlet weak var topScrollPageControl: UIPageControl!
     @IBOutlet weak var topScrollView: UIScrollView!
@@ -37,14 +48,6 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate {
         
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
