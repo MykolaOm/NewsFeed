@@ -140,6 +140,7 @@
                         <outlet property="TopScrollView" destination="5vm-77-ctv" id="Ejo-c1-OPh"/>
                         <outlet property="tableView" destination="AN4-jz-9de" id="8g4-yX-t4n"/>
                         <outlet property="topScrollPageControl" destination="g7Y-9B-Efz" id="N1p-cd-FmY"/>
+                        <outlet property="topScrollView" destination="5vm-77-ctv" id="4gZ-5t-xV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxJ-Bb-Fmg" userLabel="First Responder" sceneMemberID="firstResponder"/>

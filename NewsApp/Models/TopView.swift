@@ -12,7 +12,6 @@ class TopView: UIView {
 
 
     @IBOutlet weak var ImageView: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var voteAvarageLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
