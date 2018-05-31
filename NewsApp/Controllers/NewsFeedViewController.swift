@@ -11,14 +11,7 @@ import UIKit
 class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDelegate, UITableViewDataSource {
    
     var flag = 0
-    var newsFeedSource = [NewsTableDataSource](){
-        didSet {
-            if newsFeedSource.count == 9, flag == 0 {
-                flag = 1
-                tableView.reloadData()
-            }
-        }
-    }
+    var newsFeedSource = [NewsTableDataSource]()
     
     let cellReuseIdentifier = "PosterCell"
     let tableViewRowsQty : Int = 10
@@ -71,7 +64,7 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
         setUpScrollView()
         let cellNib = UINib(nibName: "NewsTableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
-        
+        tableView.backgroundColor = .black
     }
 
     private func setUpScrollView(){
@@ -119,10 +112,13 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
         }
     }
     private func loadTop(){
-        for (index,top) in newsFeedSource.enumerated() {
+       if newsFeedSource.count > 0  {
+        var count = 0
+            for item in newsFeedSource {
+        
             if let topView = Bundle.main.loadNibNamed("Top", owner: self, options: nil)?.first as? TopView {
                 let url = URL(string: "https://i.ytimg.com/vi/M8wBhKwgrVw/maxresdefault.jpg")
-                if newsFeedSource[index].voteAverage > 7.5 {
+                if item.voteAverage > 7.5 {
                     DispatchQueue.global().async {
                         let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         DispatchQueue.main.async {
@@ -130,16 +126,17 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
                         }
                     }
                     
-                    topView.descriptionLabel.text = newsFeedSource[index].overview
-                    topView.titleLabel.text = newsFeedSource[index].title
-                    topView.voteAvarageLabel.text = String(newsFeedSource[index].voteAverage)
+                    topView.descriptionLabel.text = item.overview
+                    topView.titleLabel.text = item.title
+                    topView.voteAvarageLabel.text = String(item.voteAverage)
                     
                     topScrollView.addSubview(topView)
                     topView.frame.size.width = self.view.bounds.width
-                    topView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
+                    topView.frame.origin.x = CGFloat(count) * self.view.bounds.size.width
                 }
             }
-        
+                count += 1
+        }
             
         }
     }
