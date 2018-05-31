@@ -12,6 +12,7 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
    
     var flag = 0
     var newsFeedSource = [NewsTableDataSource]()
+       
     
     let cellReuseIdentifier = "PosterCell"
     let tableViewRowsQty : Int = 10
@@ -25,14 +26,22 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+        cell.backgroundColor = .black
         if let customCell = tableView.dequeueReusableCell(withIdentifier: "PosterCell", for: indexPath) as? NewsTableViewCell {
             if newsFeedSource.count > 9 {
                 
             customCell.cellDescription.text = newsFeedSource[indexPath.row].overview
             customCell.cellRating.text = newsFeedSource[indexPath.row].title
             customCell.cellRelease.text = String(newsFeedSource[indexPath.row].voteAverage)
-//             customCell.cellImage.image =
-            setCellImage(url:newsFeedSource[indexPath.row].imageUrl, cell : customCell)
+            let url = URL(string: newsFeedSource[indexPath.row].imageUrl)
+                
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async {
+                    customCell.cellImage.image = UIImage(data: data!)
+                }
+            }
+//            setCellImage(url:newsFeedSource[indexPath.row].imageUrl, cell : customCell)
             cell = customCell
             }
         }
@@ -61,18 +70,27 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
     override func viewDidLoad() {
         super.viewDidLoad()
         setJsonToDtScr()
-        setUpScrollView()
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let cellNib = UINib(nibName: "NewsTableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
-        tableView.backgroundColor = .black
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 300
+        
+        setUpScrollView()
+        let view = UIView()
+        view.backgroundColor = .black
+        self.tableView.tableFooterView = view
     }
-
+    
+    
     private func setUpScrollView(){
         let scrollViewSlides = 4
         
         topScrollView.isPagingEnabled = true
         topScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(scrollViewSlides), height: self.view.bounds.height/3)
-        
         topScrollView.showsHorizontalScrollIndicator = false
         topScrollView.showsVerticalScrollIndicator = false
         topScrollView.delegate = self
@@ -111,16 +129,44 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
         newsFeedSource.append(NewsTableDataSource(overview: movieNews[item].overview , title: movieNews[item].title, posterPath: movieNews[item].posterPath, voteAverage: movieNews[item].voteAverage))
         }
     }
+    func loadTopA(){
+        for (index,top) in newsFeedSource.enumerated() {
+            if let topView = Bundle.main.loadNibNamed("Top", owner: self, options: nil)?.first as? TopView {
+                if index == 2 {
+                    let url = URL(string: newsFeedSource[index].imageUrl)
+                    
+                    DispatchQueue.global().async {
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        DispatchQueue.main.async {
+                            topView.ImageView.image = UIImage(data: data!)
+                        }
+                    }
+                }
+                topView.titleLabel.text = newsFeedSource[index].title
+                topView.descriptionLabel.text = newsFeedSource[index].overview
+                topView.voteAvarageLabel.text = String(newsFeedSource[index].voteAverage)
+                
+                topScrollView.addSubview(topView)
+                topView.frame.size.width = self.view.bounds.width
+                topView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
+            }
+        }
+        
+        
+    }
+    
+    
     private func loadTop(){
-       if newsFeedSource.count > 0  {
+//       if newsFeedSource.count > 0  {
         var count = 0
             for item in newsFeedSource {
         
             if let topView = Bundle.main.loadNibNamed("Top", owner: self, options: nil)?.first as? TopView {
-                let url = URL(string: "https://i.ytimg.com/vi/M8wBhKwgrVw/maxresdefault.jpg")
+                let url = URL(string: newsFeedSource[count].imageUrl)
+                print("THIS IS IMAGE",newsFeedSource[count].imageUrl )
                 if item.voteAverage > 7.5 {
                     DispatchQueue.global().async {
-                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        let data = try? Data(contentsOf: url!)
                         DispatchQueue.main.async {
                             topView.ImageView.image = UIImage(data: data!)
                         }
@@ -138,6 +184,6 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
                 count += 1
         }
             
-        }
+//        }
     }
 }
