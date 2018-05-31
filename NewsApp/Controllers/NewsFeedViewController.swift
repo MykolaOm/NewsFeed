@@ -75,11 +75,13 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
     
     
     private func setUpScrollView(){
-        loadTopA()
-        let scrollViewSlides = 4
+        
+        let scrollViewSlides = newsFeedSource.filter{$0.voteAverage > 7.0}.count
+        loadTop()
+        print("scrollViewSlides:",scrollViewSlides)
         
         topScrollView.isPagingEnabled = true
-        topScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(scrollViewSlides), height: topScrollView.bounds.height)
+        topScrollView.contentSize = CGSize(width: (self.view.bounds.width - 16.0) * CGFloat(scrollViewSlides), height: topScrollView.bounds.height)
         topScrollView.showsHorizontalScrollIndicator = false
         topScrollView.showsVerticalScrollIndicator = false
         topScrollView.delegate = self
@@ -124,7 +126,7 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
                     let url = URL(string: newsFeedSource[index].imageUrl)
                     
                     DispatchQueue.global().async {
-                        let data = try? Data(contentsOf: url!) 
+                        let data = try? Data(contentsOf: url!)
                         DispatchQueue.main.async {
                             topView.ImageView.image = UIImage(data: data!)
                         }
