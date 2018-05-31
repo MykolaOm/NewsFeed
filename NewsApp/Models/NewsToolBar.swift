@@ -36,7 +36,7 @@ class NewsToolBar: UIToolbar {
         
         // cleanup needed!---------------------------------
         let ley = UIBarButtonItem(customView: label)
-        let lala = UIBarButtonItem(title: "MyTitle", style: UIBarButtonItemStyle.plain, target: self, action: nil)
+//        let lala = UIBarButtonItem(title: "MyTitle", style: UIBarButtonItemStyle.plain, target: self, action: nil)
         //TextField
         textField = UITextField(frame: CGRect(x:0,y:0,width:150,height:30))
         textField.delegate = superview.self as? UITextFieldDelegate

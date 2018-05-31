@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TopView" customModule="NewsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hna-hg-wkJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqW-M6-EMN">
+                    <rect key="frame" x="13" y="51" width="349" height="89"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="QqW-M6-EMN" secondAttribute="height" multiplier="349:89" id="RB3-Mx-eac"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPR-56-rzf">
+                    <rect key="frame" x="16" y="180.5" width="43" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="iPR-56-rzf" secondAttribute="height" multiplier="23:11" id="Y0s-Q4-lSF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgA-4h-jPz">
+                    <rect key="frame" x="166.5" y="180.5" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XgA-4h-jPz" secondAttribute="bottom" constant="20" id="4pB-zu-6W7"/>
+                <constraint firstItem="hna-hg-wkJ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7qW-ib-N08"/>
+                <constraint firstItem="QqW-M6-EMN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="51" id="GuN-9u-LmZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QqW-M6-EMN" secondAttribute="trailing" constant="13" id="JEU-4y-r46"/>
+                <constraint firstItem="hna-hg-wkJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="OwJ-ul-A4D"/>
+                <constraint firstItem="hna-hg-wkJ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="SCq-Ga-hsY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iPR-56-rzf" secondAttribute="bottom" constant="20" id="T0m-fJ-fhg"/>
+                <constraint firstItem="hna-hg-wkJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dWG-5t-lbD"/>
+                <constraint firstItem="XgA-4h-jPz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iP9-1m-Tef"/>
+                <constraint firstItem="QqW-M6-EMN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jUm-6Y-21T"/>
+                <constraint firstItem="iPR-56-rzf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="kij-tm-JBY"/>
+                <constraint firstItem="QqW-M6-EMN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="13" id="nJv-PN-gi7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="ImageView" destination="hna-hg-wkJ" id="sDj-ot-3nx"/>
+                <outlet property="descriptionLabel" destination="QqW-M6-EMN" id="dmF-3r-lFj"/>
+                <outlet property="titleLabel" destination="XgA-4h-jPz" id="y21-ZN-tGe"/>
+                <outlet property="voteAvarageLabel" destination="iPR-56-rzf" id="j8W-7X-Mnw"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="282.5"/>
+        </view>
+    </objects>
+</document>

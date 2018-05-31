@@ -82,16 +82,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="eZY-Vm-54u" kind="relationship" relationship="viewControllers" id="ngT-Lv-EdH"/>
                         <segue destination="o7j-HW-JNt" kind="relationship" relationship="viewControllers" id="bjG-Xi-wvF"/>
                         <segue destination="t1H-AB-3oC" kind="relationship" relationship="viewControllers" id="0YM-O5-pv9"/>
-                        <segue destination="eZY-Vm-54u" kind="relationship" relationship="viewControllers" id="ngT-Lv-EdH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkC-JD-Hey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="892" y="157"/>
         </scene>
-        <!--FAVORITES-->
+        <!--STORIES-->
         <scene sceneID="shu-9d-oJW">
             <objects>
                 <viewController id="eZY-Vm-54u" customClass="NewsFeedViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,28 +99,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-77-ctv">
-                                <rect key="frame" x="16" y="20" width="343" height="207"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-77-ctv">
+                                <rect key="frame" x="8" y="28" width="359" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="207" id="HZh-WW-9js"/>
+                                </constraints>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="g7Y-9B-Efz">
                                 <rect key="frame" x="168" y="190" width="39" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AN4-jz-9de">
-                                <rect key="frame" x="16" y="235" width="343" height="382"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AN4-jz-9de">
+                                <rect key="frame" x="8" y="243" width="359" height="366"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="eZY-Vm-54u" id="i1x-m5-K3e"/>
+                                    <outlet property="delegate" destination="eZY-Vm-54u" id="dgX-QG-Skq"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.21700919727537205" blue="0.17866801358001139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AN4-jz-9de" secondAttribute="bottom" constant="8" id="2z0-FX-217"/>
+                            <constraint firstItem="AN4-jz-9de" firstAttribute="leading" secondItem="4hg-vn-K5t" secondAttribute="leading" constant="8" id="7UH-tS-cCd"/>
+                            <constraint firstItem="4hg-vn-K5t" firstAttribute="trailing" secondItem="5vm-77-ctv" secondAttribute="trailing" constant="8" id="R4p-Ba-war"/>
+                            <constraint firstItem="5vm-77-ctv" firstAttribute="top" secondItem="4hg-vn-K5t" secondAttribute="top" constant="8" id="ZUR-Ga-XFA"/>
+                            <constraint firstItem="AN4-jz-9de" firstAttribute="top" secondItem="5vm-77-ctv" secondAttribute="bottom" constant="8" id="eYp-kC-FWF"/>
+                            <constraint firstItem="4hg-vn-K5t" firstAttribute="trailing" secondItem="AN4-jz-9de" secondAttribute="trailing" constant="8" id="iog-gf-kkN"/>
+                            <constraint firstItem="5vm-77-ctv" firstAttribute="leading" secondItem="4hg-vn-K5t" secondAttribute="leading" constant="8" id="kzd-7B-pGb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4hg-vn-K5t"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="FAVORITES" id="2zE-8A-g4V">
+                    <tabBarItem key="tabBarItem" title="STORIES" id="2zE-8A-g4V">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="TopScrollView" destination="5vm-77-ctv" id="Ejo-c1-OPh"/>
+                        <outlet property="tableView" destination="AN4-jz-9de" id="8g4-yX-t4n"/>
                         <outlet property="topScrollPageControl" destination="g7Y-9B-Efz" id="N1p-cd-FmY"/>
                     </connections>
                 </viewController>

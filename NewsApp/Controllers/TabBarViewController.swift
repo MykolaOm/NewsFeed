@@ -18,13 +18,11 @@ class TabBarViewController: UITabBarController {
     override func viewWillLayoutSubviews() {
         
         var tabFrame:CGRect = self.tabBar.frame
-        tabFrame.origin.y = self.view.frame.origin.y //CGFloat(-35.0)
+        tabFrame.origin.y = self.view.frame.origin.y 
         self.tabBar.frame = tabFrame
 //        self.tabBar.backgroundColor = .black
         self.tabBar.barTintColor = UIColor.black
-        print("container",self.view.superview?.frame)
-//        print("tabbar frame",self.view.frame.width,self.view.frame.width)
-//        print("tabfRame",tabFrame.width, tabFrame.height)
+//
         
     }
     
