@@ -8,8 +8,9 @@
 
 import UIKit
 
-class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDelegate, UITableViewDataSource {
-   
+class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var containerForSrollView: UIView!
+    
     var flag = 0
     var newsFeedSource = [NewsTableDataSource]()
        
@@ -81,7 +82,7 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
         print("scrollViewSlides:",scrollViewSlides)
         
         topScrollView.isPagingEnabled = true
-        topScrollView.contentSize = CGSize(width: (self.view.bounds.width - 16.0) * CGFloat(scrollViewSlides), height: topScrollView.bounds.height)
+        topScrollView.contentSize = CGSize(width: (containerForSrollView.bounds.width) * CGFloat(scrollViewSlides), height: containerForSrollView.bounds.height)
         topScrollView.showsHorizontalScrollIndicator = false
         topScrollView.showsVerticalScrollIndicator = false
         topScrollView.delegate = self
@@ -165,8 +166,8 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITabBarDe
                     topView.voteAvarageLabel.text = String(item.voteAverage)
                     
                     topScrollView.addSubview(topView)
-                    topView.frame.size.width = self.view.bounds.width
-                    topView.frame.origin.x = CGFloat(count) * self.view.bounds.size.width
+                    topView.frame.size.width = containerForSrollView.bounds.width
+                    topView.frame.origin.x = CGFloat(count) * containerForSrollView.bounds.size.width
                 }
             }
                 count += 1

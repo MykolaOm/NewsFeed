@@ -99,11 +99,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iko-vF-jnv">
+                                <rect key="frame" x="8" y="28" width="359" height="207"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="207" id="N33-i1-722"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-77-ctv">
                                 <rect key="frame" x="8" y="28" width="359" height="207"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="207" id="HZh-WW-9js"/>
-                                </constraints>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="g7Y-9B-Efz">
                                 <rect key="frame" x="168" y="190" width="39" height="37"/>
@@ -125,13 +129,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Iko-vF-jnv" firstAttribute="top" secondItem="4hg-vn-K5t" secondAttribute="top" constant="8" id="1MM-oc-QOQ"/>
                             <constraint firstAttribute="bottom" secondItem="AN4-jz-9de" secondAttribute="bottom" constant="8" id="2z0-FX-217"/>
+                            <constraint firstItem="AN4-jz-9de" firstAttribute="top" secondItem="Iko-vF-jnv" secondAttribute="bottom" constant="8" id="5U2-hs-ORW"/>
                             <constraint firstItem="AN4-jz-9de" firstAttribute="leading" secondItem="4hg-vn-K5t" secondAttribute="leading" constant="8" id="7UH-tS-cCd"/>
-                            <constraint firstItem="4hg-vn-K5t" firstAttribute="trailing" secondItem="5vm-77-ctv" secondAttribute="trailing" constant="8" id="R4p-Ba-war"/>
-                            <constraint firstItem="5vm-77-ctv" firstAttribute="top" secondItem="4hg-vn-K5t" secondAttribute="top" constant="8" id="ZUR-Ga-XFA"/>
-                            <constraint firstItem="AN4-jz-9de" firstAttribute="top" secondItem="5vm-77-ctv" secondAttribute="bottom" constant="8" id="eYp-kC-FWF"/>
+                            <constraint firstItem="4hg-vn-K5t" firstAttribute="trailing" secondItem="Iko-vF-jnv" secondAttribute="trailing" constant="8" id="CCc-b4-lHV"/>
+                            <constraint firstItem="Iko-vF-jnv" firstAttribute="top" secondItem="5vm-77-ctv" secondAttribute="bottom" constant="-207" id="Clu-JF-Ph9"/>
+                            <constraint firstItem="5vm-77-ctv" firstAttribute="height" secondItem="Iko-vF-jnv" secondAttribute="height" id="FX5-H7-PVd"/>
+                            <constraint firstItem="5vm-77-ctv" firstAttribute="leading" secondItem="Iko-vF-jnv" secondAttribute="trailing" constant="-359" id="if8-IW-ZDZ"/>
                             <constraint firstItem="4hg-vn-K5t" firstAttribute="trailing" secondItem="AN4-jz-9de" secondAttribute="trailing" constant="8" id="iog-gf-kkN"/>
-                            <constraint firstItem="5vm-77-ctv" firstAttribute="leading" secondItem="4hg-vn-K5t" secondAttribute="leading" constant="8" id="kzd-7B-pGb"/>
+                            <constraint firstItem="Iko-vF-jnv" firstAttribute="leading" secondItem="4hg-vn-K5t" secondAttribute="leading" constant="8" id="m9R-AP-zwI"/>
+                            <constraint firstItem="5vm-77-ctv" firstAttribute="width" secondItem="Iko-vF-jnv" secondAttribute="width" id="vuW-q0-9LI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4hg-vn-K5t"/>
                     </view>
@@ -140,6 +148,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="TopScrollView" destination="5vm-77-ctv" id="Ejo-c1-OPh"/>
+                        <outlet property="containerForSrollView" destination="Iko-vF-jnv" id="aqV-Sx-T4k"/>
                         <outlet property="tableView" destination="AN4-jz-9de" id="8g4-yX-t4n"/>
                         <outlet property="topScrollPageControl" destination="g7Y-9B-Efz" id="N1p-cd-FmY"/>
                         <outlet property="topScrollView" destination="5vm-77-ctv" id="4gZ-5t-xV8"/>

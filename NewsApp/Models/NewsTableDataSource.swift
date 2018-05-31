@@ -14,7 +14,7 @@ class NewsTableDataSource {
     let title : String
     let imageUrl : String
     let voteAverage : Double
-    let basePath = "http://image.tmdb.org/t/p/w500"
+    private let basePath = "http://image.tmdb.org/t/p/w500"
    
     init( overview : String, title : String , posterPath:String, voteAverage: Double) {
         self.overview = overview
