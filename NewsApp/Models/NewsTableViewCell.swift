@@ -10,13 +10,13 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cellSpinner: UIActivityIndicatorView!
     @IBOutlet weak var cellRelease: UILabel!
     @IBOutlet weak var cellRating: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
    
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

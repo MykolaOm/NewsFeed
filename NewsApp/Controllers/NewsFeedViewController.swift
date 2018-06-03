@@ -11,10 +11,14 @@ import UIKit
 class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var containerForSrollView: UIView!
     private var flag = 0
+    private var width:CGFloat = 0.0
     private var newsFeedSource = [NewsTableDataSource]()
     private let cellReuseIdentifier = "PosterCell"
     private let tableViewRowsQty : Int = 10
     private var imageCache = ImageCache()
+    private var lock = false
+//    private var imgCache = NSCache<NSString, UIImage>()
+    
     @IBOutlet weak var tableView: UITableView!
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,18 +30,25 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
         var cell = UITableViewCell()
         cell.backgroundColor = .black
         if let customCell = tableView.dequeueReusableCell(withIdentifier: "PosterCell", for: indexPath) as? NewsTableViewCell {
+            customCell.cellSpinner.startAnimating()
             if newsFeedSource.count > 0 {
-            customCell.cellRating.text = newsFeedSource[indexPath.row].title
-            customCell.cellRelease.text = String(newsFeedSource[indexPath.row].voteAverage)
-            let url = URL(string: newsFeedSource[indexPath.row].imageUrl)
-                
+                customCell.cellRating.text = newsFeedSource[indexPath.row].title
+                customCell.cellRelease.text = String(newsFeedSource[indexPath.row].voteAverage)
+                let url = URL(string: newsFeedSource[indexPath.row].imageUrl)
+//                imgCache.setObject(<#T##obj: UIImage##UIImage#>, forKey: <#T##NSString#>)
                 if let image = self.imageCache.tryGetImage(url: url!) {
                     customCell.cellImage.image = image
+                    customCell.cellSpinner.stopAnimating()
+                    customCell.cellSpinner.isHidden = true
+
                 } else {
                     DispatchQueue.global().async { [url, customCell, unowned imageCashe = self.imageCache] in
                         if let image = imageCashe.getImage(url: url!) {
                             DispatchQueue.main.async { [image, customCell] in
                                 customCell.cellImage.image = image
+                                customCell.cellSpinner.stopAnimating()
+                                customCell.cellSpinner.isHidden = true
+
                             }
                         }
                     }
@@ -58,12 +69,11 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         setJsonToDtScr()
+        let view = UIView()
+        view.backgroundColor = .black
+        self.tableView.tableFooterView = view
     }
     override func viewWillLayoutSubviews() {
-        if topScrollView.subviews.count > 0{
-            print(topScrollView.subviews[3],topScrollView.subviews[4])
-            print("topScrollView.subviews[3]",topScrollView.subviews.count)
-        }
         print("2")
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -74,15 +84,9 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
         self.tableView.estimatedRowHeight = 300
         setUpScrollView()
         print("1")
-//        self.view.setNeedsLayout()
-//        self.view.setNeedsDisplay()
-//        tableView.layoutIfNeeded()
-//        tableView.setNeedsDisplay()
-//        topScrollView.setNeedsLayout()
-//        topScrollView.setNeedsDisplay()
-        let view = UIView()
-        view.backgroundColor = .black
-        self.tableView.tableFooterView = view
+        tableView.setNeedsLayout()
+
+
     }
     override func viewDidLayoutSubviews() {
         if flag == 0 {
@@ -128,6 +132,8 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
                 print("Error serializing json:", jsonErr)
             }
         }.resume()
+        tableView.reloadData()
+        topScrollView.reloadInputViews()
     }
     
     private func setToArray(movieNews : [Movie]) {
@@ -138,25 +144,34 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
    
     private func loadTop(){
         var count = 0
-        for item in newsFeedSource {
-            if let topView = Bundle.main.loadNibNamed("Top", owner: self, options: nil)?.first as? TopView {
-                let url = URL(string: newsFeedSource[count].imageUrl)
-                print("THIS IS IMAGE",newsFeedSource[count].imageUrl )
-                if item.voteAverage > 7.0 {
-                    DispatchQueue.global().async {
-                        let data = try? Data(contentsOf: url!)
-                        DispatchQueue.main.async {
-                            topView.ImageView.image = UIImage(data: data!)
+        if !lock {
+            for item in newsFeedSource {
+                if let topView = Bundle.main.loadNibNamed("Top", owner: self, options: nil)?.first as? TopView {
+                    let url = URL(string: newsFeedSource[count].imageUrl)
+                    if item.voteAverage > 7.0 {
+                        if let image = self.imageCache.tryGetImage(url: url!) {
+                            topView.ImageView.image = image
+                        } else {
+                            DispatchQueue.global().async {
+                                let data = try? Data(contentsOf: url!)
+                                DispatchQueue.main.async {
+                                    topView.ImageView.image = UIImage(data: data!)
+                                }
+                            }
                         }
+                        topView.titleLabel.text = item.title
+                        topView.voteAvarageLabel.text = String(item.voteAverage)
+                        topScrollView.addSubview(topView)
+                        lock = true
+                        topView.frame.size.width = containerForSrollView.bounds.width
+                        topView.frame.origin.x = CGFloat(count) * containerForSrollView.bounds.size.width
+                        count += 1
                     }
-                    topView.titleLabel.text = item.title
-                    topView.voteAvarageLabel.text = String(item.voteAverage)
-                    topScrollView.addSubview(topView)
-                    topView.frame.size.width = containerForSrollView.bounds.width
-                    topView.frame.origin.x = CGFloat(count) * containerForSrollView.bounds.size.width
+                    
                 }
+                
             }
-            count += 1
+         
         }
     }
 }
