@@ -35,10 +35,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xJn-aS-tVu">
+                        <rect key="frame" x="150" y="116" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4on-RR-VMx" firstAttribute="top" secondItem="eef-R6-1QD" secondAttribute="bottom" constant="2" id="2LC-48-MSd"/>
                     <constraint firstAttribute="bottomMargin" secondItem="4on-RR-VMx" secondAttribute="bottom" constant="-1" id="2wS-hi-dZD"/>
+                    <constraint firstItem="xJn-aS-tVu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7ag-Dy-Cdg"/>
                     <constraint firstItem="eef-R6-1QD" firstAttribute="centerX" secondItem="vk6-Vb-4Xz" secondAttribute="centerX" id="9y6-Ny-FZf"/>
                     <constraint firstItem="vk6-Vb-4Xz" firstAttribute="top" secondItem="eef-R6-1QD" secondAttribute="bottom" constant="2" id="AED-9P-jDw"/>
                     <constraint firstItem="eef-R6-1QD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kq6-jz-1nT"/>
@@ -46,6 +50,7 @@
                     <constraint firstAttribute="trailing" secondItem="eef-R6-1QD" secondAttribute="trailing" id="LEq-8p-gQ9"/>
                     <constraint firstAttribute="trailing" secondItem="eef-R6-1QD" secondAttribute="trailing" id="PXw-lg-eTN"/>
                     <constraint firstItem="4on-RR-VMx" firstAttribute="baseline" secondItem="vk6-Vb-4Xz" secondAttribute="baseline" id="SSo-BL-PjL"/>
+                    <constraint firstItem="xJn-aS-tVu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aO3-QK-J1O"/>
                     <constraint firstItem="4on-RR-VMx" firstAttribute="top" secondItem="eef-R6-1QD" secondAttribute="bottom" constant="2" id="ekC-gj-wgq"/>
                     <constraint firstItem="4on-RR-VMx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="oN9-P7-RZU"/>
                     <constraint firstItem="eef-R6-1QD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pUw-NI-3zy"/>
@@ -57,6 +62,7 @@
                 <outlet property="cellImage" destination="eef-R6-1QD" id="QAV-bV-WuE"/>
                 <outlet property="cellRating" destination="4on-RR-VMx" id="vlS-tk-fmk"/>
                 <outlet property="cellRelease" destination="vk6-Vb-4Xz" id="Kfq-8j-wr0"/>
+                <outlet property="cellSpinner" destination="xJn-aS-tVu" id="yLX-ES-OTj"/>
             </connections>
             <point key="canvasLocation" x="26" y="-9"/>
         </tableViewCell>
