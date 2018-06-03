@@ -12,7 +12,6 @@ class NewsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellRelease: UILabel!
     @IBOutlet weak var cellRating: UILabel!
-    @IBOutlet weak var cellDescription: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
    
     override func awakeFromNib() {

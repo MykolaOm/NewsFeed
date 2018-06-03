@@ -2,7 +2,7 @@
 //  ImageCache.swift
 //  NewsApp
 //
-//  Created by Mykola Omelianov on 6/1/18.
+//  Created by Nikolas Omelianov on 6/1/18.
 //  Copyright © 2018 Nikolas Omelianov. All rights reserved.
 //
 
