@@ -53,10 +53,17 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
                         }
                     }
                 }
+                tableView.reloadInputViews()
             cell = customCell
             }
         }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        tableView.setNeedsDisplay()
+//        tableView.setNeedsLayout()
+//        cell.setNeedsLayout()
+//        cell.setNeedsDisplay()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,11 +76,15 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         setJsonToDtScr()
+        setUpScrollView()
+
         let view = UIView()
         view.backgroundColor = .black
         self.tableView.tableFooterView = view
     }
     override func viewWillLayoutSubviews() {
+        loadTop()
+        tableView.reloadData()
         print("2")
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +93,9 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
         self.tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 300
+//        setUpScrollView()
         setUpScrollView()
+
         print("1")
         tableView.setNeedsLayout()
 
@@ -133,7 +146,7 @@ class NewsFeedViewController: UIViewController, UIScrollViewDelegate, UITableVie
             }
         }.resume()
         tableView.reloadData()
-        topScrollView.reloadInputViews()
+//        topScrollView.reloadInputViews()
     }
     
     private func setToArray(movieNews : [Movie]) {
